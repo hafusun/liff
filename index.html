@@ -7,8 +7,9 @@
 </head>
 <body>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-    <input type="text" placeholder="msg" id="msg"　value="テスト">
+    <input type="text" placeholder="テスト" id="msg">
     <button onclick="send()">Send</button>
+    Created By Hafu
     <script>
         liff.init({
             liffId: '2000879195-PeyR48wj', 
@@ -19,7 +20,7 @@
 
         function send() {
             try {
-                const val = document.getElementById("msg")
+                const val = document.getElementById("msg").value
                 liff.sendMessages({
                 "type":"text",
                 "text":val
