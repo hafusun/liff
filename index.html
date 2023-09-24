@@ -7,8 +7,10 @@
 </head>
 <body>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <p>status:<span id="status"></span></p>
     <p>name:<span id="name"></span></p>
     <p>icon:<span id="icon"></span></p>
+    <p>token:<span id="token"></span></p>
     <p>send:<span id="send"></span></p>
     <input type="text" value="テスト" placeholder="message" id="msg">
     <button onclick="send()">Send</button>
@@ -21,6 +23,8 @@
             withLoginOnExternalBrowser: true, 
         }).then(() => {
             sendLiff()
+            getProfile()
+            getIcon()
         });
 
         function send() {
@@ -53,7 +57,17 @@
                 document.getElementById('err').innerHTML= err
             });
         }
-        function getProfile(){
+        function getToken(){
+            liff.getAccessToken()
+            .then((token) => {
+                const tok = document.getElementById('token');
+                displayName.innerHTML= token;
+            })
+            .catch((err) => {
+                document.getElementById('err').innerHTML= err
+            });
+        }
+        function getIcon(){
             liff.getProfile()
             .then((profile) => {
                 const name = profile.pictureUrl || 'None'
@@ -120,10 +134,10 @@
         console.log(res);
         token = null;
         if (res.error) {
-            document.getElementById('err').innerHTML = "Error: " + res.error;
+            document.getElementById('status').innerHTML = "Error: " + res.error;
         }
         if (res.scope) {
-            document.getElementById('err').innerHTML = "Success: " + res.scope;
+            document.getElementById('status').innerHTML = "Success: " + res.scope;
             token = t;
         }
     }
