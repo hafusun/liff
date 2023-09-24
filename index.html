@@ -58,7 +58,6 @@
                 const json = document.getElementById("flex_json").value
                 const data = {type: 'flex',altText: val,contents:JSON.parse(json)}
                 Fsend(data)
-                });
             }catch(err){
                 alert(err)
                 document.getElementById('err').innerHTML= 'Error: '+err
