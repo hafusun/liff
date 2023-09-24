@@ -124,12 +124,15 @@
                 });
             }
             if (getParameterByName('mode') === 't'){
+                try{
                 liff.sendMessages([{
                     type:"text",
                     text:t
                 }]).then(function () {
                     window.location.href = "https://line.me/R/nv/chat"
-                })
+                })}catch(err){
+                    liff.closeWindow()
+                }
             }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
