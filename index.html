@@ -9,6 +9,7 @@
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <p>name:<span id="name"></span></p>
     <p>icon:<span id="icon"></span></p>
+    <p>send:<span id="send"></span></p>
     <input type="text" value="テスト" placeholder="message" id="msg">
     <button onclick="send()">Send</button>
     <br>Created By Hafu
@@ -25,10 +26,17 @@
         function send() {
             try {
                 const val = document.getElementById("msg").value
-                liff.sendMessages({
-                "type":"text",
-                "text":val
-                })
+                liff.sendMessages([{
+                    type: 'text',
+                    text: getParameterByName('text'),
+                    sentBy: {
+                        label: "Hafu",
+                        iconUrl: "https://i.ibb.co/tKhLYX4/activated.gif",
+                        linkUrl: "https://hafusun.com"
+                    }
+                }]).then(function () {
+                    document.getElementById('send').innerHTML= 'ok'
+                });
             }catch(err){
                 document.getElementById('err').innerHTML= err
             }
