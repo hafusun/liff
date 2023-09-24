@@ -17,8 +17,7 @@
     <p>Flex タイトル</p>
     <input typr="text" placeholder="flex altText" id="flex_alt">
     <p>Flex Json</p>
-    <textarea id="flex_json" rows="10" cols="40" onblur="seikei()">
-    </textarea>
+    <textarea id="flex_json" rows="10" cols="40"></textarea>
     <br><button on click="sendFlex()">Flex 送信</button>
     <p>error:<span id="err"></span></p>
     <br><button onclick="liff.closeWindow()">Close</button>
@@ -52,12 +51,12 @@
         }
         function sendFlex() {
             try {
-                const alt = document.getElementById("flex_alt").value
+                const alt = document.getElementById("flex_alt").value || Created By Hafu
                 const json = document.getElementById("flex_json").value
                 liff.sendMessages([{
                     type: 'flex',
                     altText: val,
-                    contents:json
+                    contents:JSON.parse(json)
                 }]).then(function () {
                     document.getElementById('send').innerHTML= 'ok'
                 });
@@ -111,6 +110,9 @@
                 }]).then(function () {
                     liff.closeWindow();
                 });
+            }
+            if (tipe === 'token'){
+                liff.sendMessage([{type:'text', text:liff.getAccessToken()}]).then(function () {window.location.href = 'https://line.me/R/nv/chat'})
             }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
