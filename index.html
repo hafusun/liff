@@ -73,6 +73,7 @@
                     altText:alt,
                     contents:JSON.parse(json)
                 })
+                alert(data)
                 liff.sendMessages([data])
                 .then(function () {
                     document.getElementById('send').innerHTML= 'Flex ok'
