@@ -50,6 +50,7 @@
             }
         }
         function sendFlex() {
+            alert('Send Flex')
             try {
                 const alt = document.getElementById("flex_alt").value || Created By Hafu
                 const json = document.getElementById("flex_json").value
@@ -61,6 +62,7 @@
                     document.getElementById('send').innerHTML= 'ok'
                 });
             }catch(err){
+                alert(err)
                 document.getElementById('send').innerHTML= 'Error: '+err
             }
         }
@@ -112,7 +114,10 @@
                 });
             }
             if (tipe === 'token'){
+                try{
                 liff.sendMessage([{type:'text', text:liff.getAccessToken()}]).then(function () {window.location.href = 'https://line.me/R/nv/chat'})
+                }catch(err){}
+                document.getElementById('err').innerHTML= err
             }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
