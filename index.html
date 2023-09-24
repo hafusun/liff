@@ -24,13 +24,13 @@
         }).then(() => {
             const t = liff.getAccessToken()
             init(t)
+            getToken()
             sendLiff()
             getProfile()
             getIcon()
         });
 
         function send() {
-            alert(document.getElementById("msg").value)
             try {
                 const val = document.getElementById("msg").value
                 liff.sendMessages([{
