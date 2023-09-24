@@ -109,15 +109,6 @@
                 }]).then(function () {
                     liff.closeWindow();
                 });
-            }else{
-                if (tipe === 'token'){
-                    liff.sendMessage([{
-                        type:'text',
-                        text:liff.getAccessToken()
-                    }]).then(function () {
-                        window.location.href == 'https://line.me/R/nv/chat'
-                    })
-                }
             }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
@@ -162,16 +153,5 @@
     );
 }
     </script>
-    <style>
-        .txt{
-            display: inline-block;
-            width: 100%;
-            padding: 0.5em;
-            border: 1px solid #999;
-            box-sizing: border-box;
-            background: #f2f2f2;
-            margin: 0.5em 0;
-        }
-</style>
 </body>
 </html>
