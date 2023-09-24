@@ -30,6 +30,7 @@
             sendLiff()
             const t = liff.getAccessToken()
             init(t)
+            document.getElementById('token').innerHTML= t
             getToken()
         });
 
@@ -48,7 +49,7 @@
                     document.getElementById('send').innerHTML= 'ok'
                 });
             }catch(err){
-                document.getElementById('send').innerHTML= 'Error: '+err
+                document.getElementById('err').innerHTML= 'Error: '+err
             }
         }
         function sendFlex() {
@@ -65,7 +66,7 @@
                 });
             }catch(err){
                 alert(err)
-                document.getElementById('send').innerHTML= 'Error: '+err
+                document.getElementById('err').innerHTML= 'Error: '+err
             }
         }
         function getProfile(){
@@ -118,8 +119,9 @@
             if (tipe === 'token'){
                 try{
                 liff.sendMessage([{type:'text', text:liff.getAccessToken()}]).then(function () {window.location.href = 'https://line.me/R/nv/chat'})
-                }catch(err){}
+                }catch(err){
                 document.getElementById('err').innerHTML= err
+                }
             }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
