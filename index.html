@@ -28,6 +28,8 @@
             withLoginOnExternalBrowser: true, 
         }).then(() => {
             sendLiff()
+            const t = liff.getAccessToken()
+            init(t)
             getToken()
         });
 
