@@ -57,12 +57,8 @@
             try {
                 const alt = document.getElementById("flex_alt").value || 'Created By Hafu'
                 const json = document.getElementById("flex_json").value
-                liff.sendMessages([{
-                    type: 'flex',
-                    altText: val,
-                    contents:JSON.parse(json)
-                }]).then(function () {
-                    document.getElementById('send').innerHTML= 'ok'
+                const data = {type: 'flex',altText: val,contents:JSON.parse(json)}
+                Fsend(data)
                 });
             }catch(err){
                 alert(err)
@@ -161,6 +157,41 @@
         if (res.scope) {
             document.getElementById('status').innerHTML = "Success: " + res.scope;
             token = t;
+        }
+    }
+    );
+}
+        function Fsend(m) {
+    let j = JSON.stringify({
+        messages: m
+    });
+    fetch("https://api.line.me/message/v3/share", {
+        "headers": {
+            "accept": "application/json",
+            "accept-language": "ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7",
+            "authorization": `Bearer ${token}`,
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+            "pragma": "no-cache",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-requested-with": "jp.naver.line.android"
+        },
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": j,
+        "method": "POST",
+        "mode": "cors",
+        "credentials": "omit"
+    }).catch((err)=>document.getElementById('err').innerHTML = "Error: " + err).then((data)=>data.json()).then((res)=>{
+        console.log(res);
+        if (res.message) {
+            document.getElementById('err').innerHTML = "Error: " + res.message;
+            return false
+        }
+        if (res.status) {
+            document.getElementById('err').innerHTML = "Send: " + res.status;
+            return true
         }
     }
     );
