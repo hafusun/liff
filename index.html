@@ -12,7 +12,7 @@
     <p>send:<span id="send"></span></p>
     <br>Text<br>
     <input type="text" value="テスト" placeholder="message" id="msg">
-    <button onclick="send()">テキスト送信</button>
+    <button onclick="sendText()">テキスト送信</button>
     <br><br>
     <p>Flex タイトル</p>
     <input typr="text" placeholder="flex altText" id="flex_alt">
@@ -33,8 +33,7 @@
             document.getElementById('token').innerHTML= t
             getToken()
         });
-
-        function send() {
+        function sendText() {
             try {
                 const val = document.getElementById("msg").value
                 liff.sendMessages([{
