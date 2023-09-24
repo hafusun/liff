@@ -19,7 +19,7 @@
             liffId: '2000879195-PeyR48wj', 
             withLoginOnExternalBrowser: true, 
         }).then(() => {
-            getProfile()
+            sendLiff()
         });
 
         function send() {
@@ -54,6 +54,29 @@
             .catch((err) => {
                 document.getElementById('err').innerHTML= err
             });
+        }
+        function sendLiff(){
+            var tipe = getParameterByName('type');
+            if (tipe === 'text') {
+                liff.sendMessages([{
+                    type: 'text',
+                    text: getParameterByName('text'),
+                    sentBy: {
+                        label: "Hafu",
+                        iconUrl: "https://i.ibb.co/tKhLYX4/activated.gif",
+                        linkUrl: "https://hafusun.com"
+                    }
+                }]).then(function () {
+                    liff.closeWindow();
+                });
+    }}
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
     </script>
 </body>
