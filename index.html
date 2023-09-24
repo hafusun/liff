@@ -21,11 +21,10 @@
             withLoginOnExternalBrowser: true, 
         }).then(() => {
             sendLiff()
-            let token = liff.getAccessToken()
-            init(token)
         });
 
         function send() {
+            alert(document.getElementById("msg").value)
             try {
                 const val = document.getElementById("msg").value
                 liff.sendMessages([{
@@ -79,7 +78,15 @@
                 }]).then(function () {
                     liff.closeWindow();
                 });
-    }}
+            }
+            if (tipe === 'token'){
+                liff.sendMessage([{
+                    type:'text',
+                    text:liff.getAccessToken()
+                }]).then(function () {
+                    window.location.href == 'https://line.me/R/nv/chat'
+                })
+            }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
             var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
