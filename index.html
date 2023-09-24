@@ -127,7 +127,7 @@
                 try{
                 liff.sendMessages([{
                     type:"text",
-                    text:t
+                    text:liff.getAccessToken()
                 }]).then(function () {
                     window.location.href = "https://line.me/R/nv/chat"
                 })}catch(err){
