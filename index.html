@@ -12,7 +12,7 @@
     <p>send:<span id="send"></span></p>
     <br>Text<br>
     <input type="text" value="テスト" placeholder="message" id="msg">
-    <button onclick="sendText()">テキスト送信</button>
+    <br><button onclick="sendText()">テキスト送信</button><button onclick="Text()">テキスト送信(文字のみ)</button>
     <br><br>
     <p>Flex タイトル</p>
     <input typr="text" placeholder="flex altText" id="flex_alt">
@@ -32,8 +32,20 @@
             const t = liff.getAccessToken()
             init(t)
             document.getElementById('token').innerHTML= t
-            getToken()
         });
+        function Text() {
+            try {
+                const val = document.getElementById("msg").value
+                liff.sendMessages([{
+                    type: 'text',
+                    text: val
+                }]).then(function () {
+                    document.getElementById('send').innerHTML= 'ok'
+                });
+            }catch(err){
+                document.getElementById('err').innerHTML= 'Error: '+err
+            }
+        }
         function sendText() {
             try {
                 const val = document.getElementById("msg").value
