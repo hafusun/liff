@@ -68,11 +68,7 @@
             try {
                 const alt = document.getElementById("flex_alt").value || 'Created By Hafu'
                 const json = document.getElementById("flex_json").value
-                const data = JSON.parse({
-                    type:'flex',
-                    altText:alt,
-                    contents:json
-                })
+                const data = JSON.parse(json)
                 alert(data)
                 liff.sendMessages([data])
                 .then(function () {
