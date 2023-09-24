@@ -21,6 +21,8 @@
             withLoginOnExternalBrowser: true, 
         }).then(() => {
             sendLiff()
+            let token = liff.getAccessToken()
+            init(token)
         });
 
         function send() {
@@ -86,6 +88,40 @@
             if (!results[2]) return '';
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
+        function init(t) {
+    fetch(`https://api.line.me/oauth2/v2.1/verify?access_token=${t}`, {
+        "headers": {
+            "accept": "application/json",
+            "accept-language": "ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7",
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+            "pragma": "no-cache",
+            "sec-ch-ua": "\"Not/A)Brand\";v=\"99\", \"Google Chrome\";v=\"115\", \"Chromium\";v=\"115\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site"
+        },
+        "referrer": "https://piloking.github.io/",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "body": null,
+        "method": "GET",
+        "mode": "cors",
+        "credentials": "omit"
+    }).then((data)=>data.json()).then((res)=>{
+        console.log(res);
+        token = null;
+        if (res.error) {
+            document.getElementById('err').innerHTML = "Error: " + res.error;
+        }
+        if (res.scope) {
+            document.getElementById('err').innerHTML = "Success: " + res.scope;
+            token = t;
+        }
+    }
+    );
+}
     </script>
 </body>
 </html>
