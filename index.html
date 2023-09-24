@@ -43,7 +43,7 @@
                     document.getElementById('send').innerHTML= 'ok'
                 });
             }catch(err){
-                document.getElementById('err').innerHTML= 'Error: '+err
+                document.getElementById('err').innerHTML= err
             }
         }
         function sendText() {
@@ -71,7 +71,7 @@
                 const data = JSON.parse({
                     type:'flex',
                     altText:alt,
-                    contents:JSON.parse(json)
+                    contents:json
                 })
                 alert(data)
                 liff.sendMessages([data])
@@ -79,7 +79,7 @@
                     document.getElementById('send').innerHTML= 'Flex ok'
                 })
             }catch(err){
-                document.getElementById('err').innerHTML= 'Error: '+err
+                document.getElementById('err').innerHTML= err
             }
         }
         function getProfile(){
