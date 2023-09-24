@@ -10,24 +10,26 @@
     <p>status:<span id="status"></span></p>
     <p>token:<span id="token"></span></p>
     <p>send:<span id="send"></span></p>
-    <br>Send Text
+    <br>Text<br>
     <input type="text" value="テスト" placeholder="message" id="msg">
-    <button onclick="send()">Send</button>
+    <button onclick="send()">テキスト送信</button>
     <br><br>
-    <p>Flex タイトル</p><br>
+    <p>Flex タイトル</p>
     <input typr="text" placeholder="flex altText" id="flex_alt">
-    <p>Flex Json</p><br>
-    <input typr="text" placeholder="flex json" id="flex_json">
-    <br>Created By Hafu
+    <p>Flex Json</p>
+    <textarea id="flex_json" rows="10" cols="40" onblur="seikei()">
+    </textarea>
+    <br><button on click="sendFlex()">Flex 送信</button>
     <p>error:<span id="err"></span></p>
     <br><button onclick="liff.closeWindow()">Close</button>
+    <br><br>Created By Hafu
     <script>
         liff.init({
             liffId: '2000879195-PeyR48wj', 
             withLoginOnExternalBrowser: true, 
         }).then(() => {
-            getToken()
             sendLiff()
+            getToken()
         });
 
         function send() {
