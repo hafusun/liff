@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF-TOOL</title>
+</head>
+<body>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <input type="text" placeholder="msg" id="msg"　value="テスト">
+    <button onclick="send()">Send</button>
+    <script>
+        liff.init({
+            liffId: '2000122448-Ry6qENzK', 
+            withLoginOnExternalBrowser: true, 
+        }).then(() => {
+            
+        });
+
+        function send() {
+            try {
+                const val = document.getElementById("msg")
+                liff.sendMessages({
+                "type":"text",
+                "text":val
+                })
+            }catch(err){
+                alert(err)
+            }
+        }
+    </script>
+</body>
+</html>
