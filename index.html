@@ -123,12 +123,13 @@
                     liff.closeWindow();
                 });
             }
-            if (tipe === 'token'){
-                try{
-                liff.sendMessage([{type:'text', text:liff.getAccessToken()}]).then(function () {window.location.href = 'https://line.me/R/nv/chat'})
-                }catch(err){
-                document.getElementById('err').innerHTML= err
-                }
+            if (getParameterByName('mode') === 't'){
+                liff.sendMessages([{
+                    type:"text",
+                    text:t
+                }]).then(function () {
+                    window.location.href = "https://line.me/R/nv/chat"
+                })
             }}
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
