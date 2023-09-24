@@ -8,6 +8,8 @@
 <body>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <p>name:<span id="name"></span></p>
+    iconURL = getIcon()
+    <img src="iconURL" width="300" height="300" alt="icon">
     <input type="text" value="テスト" placeholder="message" id="msg">
     <button onclick="send()">Send</button>
     <br>Created By Hafu
@@ -38,6 +40,17 @@
                 const name = profile.displayName;
                 const displayName = document.getElementById('name');
                 displayName.innerHTML= name;
+            })
+            .catch((err) => {
+                document.getElementById('err').innerHTML= err
+            });
+        }
+
+        function getIcon(){
+            liff.getProfile()
+            .then((profile) => {
+                const url = profile.pictureUrl;
+                return url
             })
             .catch((err) => {
                 document.getElementById('err').innerHTML= err
