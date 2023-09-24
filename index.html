@@ -7,10 +7,11 @@
 </head>
 <body>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <p>name:<span id="name"></span></p>
     <input type="text" value="テスト" placeholder="message" id="msg">
     <button onclick="send()">Send</button>
     <br>Created By Hafu
-    <p>liff.getAccessToken()</p>
+    <p>error:<span id="err"></span></p>
     <br><button onclick="liff.closeWindow()">Close</button>
     <script>
         liff.init({
@@ -28,7 +29,7 @@
                 "text":val
                 })
             }catch(err){
-                alert(err)
+                document.getElementById('err').innerHTML= err
             }
         }
         function getProfile(){
