@@ -115,7 +115,7 @@
                 document.getElementById('err').innerHTML= err
             });
         }
-         async function getmid() {
+         function getmid() {
         try {
             const response = fetch("https://api.line.me/keep/api/v25/keep/keepStatus.json", {
                 "headers": {
@@ -136,9 +136,7 @@
                 "method": "POST",
                 "mode": "cors",
                 "credentials": "include"
-            })
-                await console.log(response)
-                await document.getElementById('status').innerHTML= response
+            }).then(function () {console.log(toString(response))})
         } catch (err) {
             rdocument.getElementById('err').innerHTML= err
         }
