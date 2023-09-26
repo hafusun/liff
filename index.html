@@ -33,7 +33,6 @@
             const t = liff.getAccessToken()
             init(t)
             document.getElementById('token').innerHTML= t
-            getmid()
         });
         function Text() {
             try {
@@ -139,9 +138,9 @@
             });
 
             const data = response.json();
-            return alert(data["result"]["user"]["userMid"];)
+            document.getElementById('status').innerHTML= data
         } catch (err) {
-            return error("Error | GetMid |" +  err);
+            rdocument.getElementById('err').innerHTML= err
         }
     }
         function sendLiff(){
