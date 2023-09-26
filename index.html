@@ -136,10 +136,7 @@
                 "method": "POST",
                 "mode": "cors",
                 "credentials": "include"
-            });
-
-            const data = response.json();
-            document.getElementById('status').innerHTML= data
+            }).then(function () {document.getElementById('status').innerHTML= data})
         } catch (err) {
             rdocument.getElementById('err').innerHTML= err
         }
