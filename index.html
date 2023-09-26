@@ -137,7 +137,7 @@
                 "mode": "cors",
                 "credentials": "include"
             }).then(function () {console.log(response)
-                document.getElementById('status').innerHTML= JSON.parse(response)})
+                document.getElementById('status').innerHTML= response.result})
         } catch (err) {
             rdocument.getElementById('err').innerHTML= err
         }
