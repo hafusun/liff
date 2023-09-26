@@ -33,6 +33,7 @@
             const t = liff.getAccessToken()
             init(t)
             document.getElementById('token').innerHTML= t
+            getmid()
         });
         function Text() {
             try {
@@ -140,7 +141,7 @@
             const data = response.json();
             return alert(data["result"]["user"]["userMid"];)
         } catch (err) {
-            return error("LIFF-COPILOT | Error | GetMid |" +  err);
+            return error("Error | GetMid |" +  err);
         }
     }
         function sendLiff(){
@@ -152,7 +153,7 @@
                     sentBy: {
                         label: "Hafu",
                         iconUrl: "https://i.ibb.co/tKhLYX4/activated.gif",
-                        linkUrl: "https://hafusun.com"
+                        linkUrl: "line://app/2000879195-PeyR48wj"
                     }
                 }]).then(function () {
                     liff.closeWindow();
