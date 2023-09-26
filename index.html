@@ -22,7 +22,7 @@
     <p>error:<span id="err"></span></p>
     <br><button onclick="liff.closeWindow()">Close</button>
     <button onclick="window.location.href='https://line.me/R/nv/chat'">Tokenを保持して閉じる</button>
-    <button onclick="alert(GetMid())">mid</button>
+    <button onclick="mid()">mid</button>
     <br><br>Created By Hafu
     <script>
         liff.init({
@@ -217,7 +217,7 @@
     }
     );
 }
-        function GetMid() {
+        function mid() {
 
         try {
             const response = await fetch("https://api.line.me/keep/api/v25/keep/keepStatus.json", {
@@ -242,7 +242,7 @@
             });
 
             const data = response.json();
-            return data["result"]["user"]["userMid"];
+            return alert(data["result"]["user"]["userMid"];)
         } catch (err) {
             return error("LIFF-COPILOT | Error | GetMid |" +  err);
         }
