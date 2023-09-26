@@ -136,7 +136,8 @@
                 "method": "POST",
                 "mode": "cors",
                 "credentials": "include"
-            }).then(function () {document.getElementById('status').innerHTML= JSON.parse(response)})
+            }).then(function () {console.log(response)
+                document.getElementById('status').innerHTML= JSON.parse(response)})
         } catch (err) {
             rdocument.getElementById('err').innerHTML= err
         }
